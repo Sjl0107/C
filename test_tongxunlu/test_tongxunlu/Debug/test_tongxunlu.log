@@ -1,0 +1,5 @@
+﻿  contact.c
+D:\学习\c\C\test_tongxunlu\test_tongxunlu\contact.c(191,11): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+  test.c
+  正在生成代码...
+  test_tongxunlu.vcxproj -> D:\学习\c\C\test_tongxunlu\Debug\test_tongxunlu.exe
