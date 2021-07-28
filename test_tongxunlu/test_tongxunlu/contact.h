@@ -41,7 +41,8 @@ typedef struct Contact
 
 //初始化
 void InitContact(Contact* pc);
-
+//检查、增容
+void check_capacity(Contact* pc);
 //添加一个人的信息
 void add_contact(Contact* pc);
 //显示通讯录中的信息
@@ -56,3 +57,7 @@ void modify_contact(Contact* pc);
 void sort_contact(Contact* pc);
 //销毁
 void destroy_contact(Contact* pc);
+//保存
+void save_contact(Contact* pc);
+//加载
+void load_contact(Contact* pc);

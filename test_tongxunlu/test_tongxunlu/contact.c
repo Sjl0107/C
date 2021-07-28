@@ -2,6 +2,42 @@
 
 #include"contact.h"
 
+void check_capacity(Contact* pc) {
+	if (pc->sz == pc->capacity) {
+		//增加容量
+		PeoInfo* ptr = (PeoInfo*)realloc(pc->data, (pc->capacity + INC) * sizeof(PeoInfo));
+		if (ptr != NULL) {
+			pc->data = ptr;
+			pc->capacity += INC;
+			printf("增容成功\n");
+		}
+		else
+		{
+			perror("add_contact::realooc");
+			return;
+		}
+	}
+}
+
+void load_contact(Contact* pc) {
+	PeoInfo tmp = { 0 };//临时空间
+	FILE* pfRead = fopen("contact.dat", "rb");
+	if (pfRead == NULL) {
+		perror("open file for reading");
+		return 1;
+	}
+	//加载数据
+	while (fread(&tmp, sizeof(PeoInfo), 1, pfRead))//fread返回的是读取数据的个数 为0时即数据读取完毕
+	{
+		check_capacity(pc);
+		pc->data[pc->sz] = tmp;
+		pc->sz++;
+	}
+	
+	fclose(pfRead);
+	pfRead = NULL;
+}
+
 void InitContact(Contact* pc) {
 	assert(pc);
 	pc->sz = 0;
@@ -11,7 +47,8 @@ void InitContact(Contact* pc) {
 		perror("InitContact::malloc");
 		return;
 	}
-
+	//加载通讯录信息
+	load_contact(pc);
 }
 
 //void add_contact(Contact* pc) {
@@ -40,20 +77,21 @@ void InitContact(Contact* pc) {
 //}
 void add_contact(Contact* pc) {
 	assert(pc);
-	if (pc->sz == pc->capacity) {
-		//增加容量
-		PeoInfo* ptr=(PeoInfo*) realloc(pc->data, (pc->capacity+INC)*sizeof(PeoInfo));
-		if (ptr != NULL) {
-			pc->data = ptr;
-			pc->capacity += INC;
-			printf("增容成功\n");
-		}
-		else
-		{
-			perror("add_contact::realooc");
-			return;
-		}
-	}
+	check_capacity(pc);
+	//if (pc->sz == pc->capacity) {
+	//	//增加容量
+	//	PeoInfo* ptr=(PeoInfo*) realloc(pc->data, (pc->capacity+INC)*sizeof(PeoInfo));
+	//	if (ptr != NULL) {
+	//		pc->data = ptr;
+	//		pc->capacity += INC;
+	//		printf("增容成功\n");
+	//	}
+	//	else
+	//	{
+	//		perror("add_contact::realooc");
+	//		return;
+	//	}
+	//}
 	//空间够用
 
 	//添加
@@ -188,7 +226,23 @@ void sort_contact(Contact* pc) {
 
 void destroy_contact(Contact* pc) {
 	free(pc->data);
-	pc->data == NULL;
+	pc->data = NULL;
 	pc->capacity = 0;
 	pc->sz = 0;
+}
+
+void save_contact(Contact* pc) {
+	int i = 0;
+	FILE* pfWrite = fopen("contact.dat","wb");
+	if (pfWrite == NULL) {
+		perror("open file for writting");
+		return 1;
+	}
+	//写数据
+	for(i=0;i<pc->sz;i++){
+		fwrite(pc->data+i,sizeof(PeoInfo),1,pfWrite);
+
+	}
+	fclose(pfWrite);
+	pfWrite = NULL;
 }
