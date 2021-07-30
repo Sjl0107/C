@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_atoi", "test_atoi\test_atoi.vcxproj", "{A037501E-B991-4249-9CE5-2B252F90A034}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Debug|x64.ActiveCfg = Debug|x64
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Debug|x64.Build.0 = Debug|x64
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Debug|x86.ActiveCfg = Debug|Win32
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Debug|x86.Build.0 = Debug|Win32
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Release|x64.ActiveCfg = Release|x64
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Release|x64.Build.0 = Release|x64
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Release|x86.ActiveCfg = Release|Win32
+		{A037501E-B991-4249-9CE5-2B252F90A034}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3111C190-FEC8-45BE-84C7-C2C610475E88}
+	EndGlobalSection
+EndGlobal
